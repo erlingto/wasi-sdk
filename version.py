@@ -25,6 +25,7 @@ def git_commit(dir):
 
 
 def parse_git_version(version):
+    f'Parse git version {version}'
     # Parse, e.g.: wasi-sdk-21-0-g317548590b40+m
     parts = version.replace('+', '-').split('-')
     assert parts.pop(0) == 'wasi'
@@ -44,7 +45,7 @@ def parse_git_version(version):
 
         # Check: dirty.
         if parts:
-            assert parts.pop(0) == 'm', f'expected dirty flag: +m'
+            assert parts.pop(0) == 'm', f'expected dirty flag: +m vs. {version}'
             dirty = True
 
     assert not parts, f'unexpected suffixes: {parts}'
